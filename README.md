@@ -29,21 +29,20 @@ Before starting, make sure your computer has up-to-date versions of the followin
 
 ### 2. Installing and opening the project
 
-- Open VS Code and then press `` ctrl + ` `` (backtick, in top left corner of keyboard) to open the built-in terminal
-- Use the `cd` (change directory) command to find an appropriate place for your code
-- Type `git clone https://github.com/Microsoft/frontend-bootcamp.git` into the terminal to pull down a copy of the workshop code
+- Open your favorite terminal
+- Use the `cd` (change directory) command to find an appropriate directory to copy this repository to. E.g., `cd ~/Desktop` will change the directory to your Desktop
+- Copy/paste `git clone https://github.com/tihuan/frontend-bootcamp.git` into the terminal to pull down a copy of this repository
 - Type `cd frontend-bootcamp` to change your current directory to the bootcamp folder
 - Type `npm install` to install all of the project dependencies
 - Type `code -r .` to open the bootcamp code in VS Code
+
   > If on a Mac, be sure you've followed [these steps](https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line) first to make the `code` command available.
 
-### 3. Run the "inner loop" build
+  > If you're too lazy to do that, you can also type `open .` in the terminal to open the repository directory, and then drag the folder into VS Code
 
-At this point, your VS Code window should look something like this:
+### 3. Run the app!
 
-<img src="https://user-images.githubusercontent.com/1434956/53654442-9c379400-3c02-11e9-8768-d19e092b606d.png" width=500 />
-
-To start the dev "inner loop," run:
+To start the dev "inner loop," run the following in your terminal (Note: The folder should still be `frontend-bootcamp/`, you can run `pwd` to check your current directory):
 
 ```
 npm start
@@ -51,7 +50,7 @@ npm start
 
 This will load the site shown below.
 
-<img src="https://user-images.githubusercontent.com/1434956/53656239-88426100-3c07-11e9-8456-e3d958aa4def.png" width=500 />
+![image](https://user-images.githubusercontent.com/1434956/53656239-88426100-3c07-11e9-8456-e3d958aa4def.png)
 
 ### 4. Lesson Structure
 
@@ -61,7 +60,7 @@ This will load the site shown below.
 
 ## What to expect
 
-For each lesson, the presenter will walk through some demo code to teach core concepts about the topic. Don't worry about writing code at this point. Just follow along via the readmes linked below.
+For each lesson, the presenter will walk through some demo code to teach core concepts about the topic. Don't worry about writing code at this point. Just follow along via the READMEs linked below.
 
 Most lessons also have an exercise portion. Exercise instructions are usually found in the readme for each step's "exercise" folder.
 

@@ -2,26 +2,42 @@
 
 ## How the web works
 
-A simple web page is rendered on the screen via the following steps.
+A simple web page is rendered on the screen via the following simplified steps:
 
-> There are many sub-steps in this process, but these are the highlights.
+> Detailed explanation [here](https://github.com/alex/what-happens-when)
 
-1. You instruct the browser which web page you'd like to see
-2. The browser looks up the site on a DNS server
+1. You instruct the browser which web page you'd like to see by typing a URL in the address bar.
+
+   - We'll use the URL ([Uniform Resource Locator](https://en.wikipedia.org/wiki/URL)): `https://chanzuckerberg.com` as an example.
+
+2. The browser looks up the URL and its associated site (`chanzuckerberg.com`) on a DNS ([Domain Name System](https://en.wikipedia.org/wiki/Domain_Name_System)) server
+
    - This is like a big phone book for website server addresses
-3. The browser asks the server to send over a specific page of the website, such as `developer.mozilla.org/filename.html` or `developer.mozilla.org`
-   - If asked for a "root"-level address, most servers will return `<root>/index.html`
+
+3. The browser asks the website server to send over the specific page you've requested.
+
+   - E.g., `chanzuckerberg.com` is short for `chanzuckerberg.com/`, which by default will return `index.html` at the root of the application directory
+
 4. The server sends the HTML file back to the browser
-5. The browser starts to read the HTML file from the top to the bottom, stopping any time that additional resources are required:
+
+5. The browser starts to parse (read) the HTML file from the top to the bottom, taking notes of all the additional resources linked to the page and will later fetch:
+
    - CSS stylesheets
    - JavaScript files
    - Fonts
    - Images
+
 6. Browser makes requests for additional resources
+
    - Those resources might request even more files
+
 7. Once the browser gets to the bottom of the page it can start working on rendering, and then display the page
 
 ![MDN Page Load](https://user-images.githubusercontent.com/1434956/53033758-9da8d580-3426-11e9-9ab8-09f42ccab9a8.png)
+
+> If you want a deep dive on how browser works, click [here](https://blog.logrocket.com/how-browser-rendering-works-behind-the-scenes-6782b0e8fb10/)
+
+> If you want a hardcore deep dive on how browser works, click [here](https://www.html5rocks.com/en/tutorials/internals/howbrowserswork)
 
 ## HTML demo
 

@@ -4,40 +4,53 @@
 
 A simple web page is rendered on the screen via the following simplified steps:
 
-> Detailed explanation [here](https://github.com/alex/what-happens-when)
+> A detailed explanation is available [here](https://github.com/alex/what-happens-when)
 
 1. You instruct the browser which web page you'd like to see by typing a URL in the address bar.
 
    - We'll use the URL ([Uniform Resource Locator](https://en.wikipedia.org/wiki/URL)): `https://chanzuckerberg.com` as an example.
 
-2. The browser looks up the URL and its associated site (`chanzuckerberg.com`) on a DNS ([Domain Name System](https://en.wikipedia.org/wiki/Domain_Name_System)) server
+2. The browser looks up the URL on a DNS ([Domain Name System](https://en.wikipedia.org/wiki/Domain_Name_System)) server
 
    - This is like a big phone book for website server addresses
+   - DNS server then returns the website server IP (e.g., `102.3.45.6`) address back to the browser
 
-3. The browser asks the website server to send over the specific page you've requested.
+3. The browser uses the IP to connect and ask the website to send over the specific page you've requested.
 
-   - E.g., `chanzuckerberg.com` is short for `chanzuckerberg.com/`, which by default will return `index.html` at the root of the application directory
+   - E.g., Requesting for `https://chanzuckerberg.com` is short for `https://chanzuckerberg.com/`, which by default will return `index.html` at the root of the application directory
 
 4. The server sends the HTML file back to the browser
 
-5. The browser starts to parse (read) the HTML file from the top to the bottom, taking notes of all the additional resources linked to the page and will later fetch:
+5. The browser first does a `preload scan` of the HTML file, so it can find all the additional resources linked to the page and start fetching them, while executing the next parsing step. The common resources are:
 
-   - CSS stylesheets
-   - JavaScript files
    - Fonts
    - Images
+   - CSS stylesheets
+   - JavaScript(JS)
 
-6. Browser makes requests for additional resources
+6. The browser then parses the HTML file to construct the Document Object Model ([DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction)), which is a representation of the HTML structure in JavaScript. And in parallel, it also constructs ([CCSOM](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model)), which is the DOM equivalent for CSS.
+
+   Lastly, combining DOM and CSSOM produces the Render Tree, which represents what HTML elements get shown on the page
+
+   - The order of CSS and JS resources listed in the HTML affects the render time for the Critical Rendering Path. The following chart shows how the second `building DOM` is blocked by `JS execution`, which in turn is blocked by `build CSSOM` ([source](https://hacks.mozilla.org/2017/09/building-the-dom-faster-speculative-parsing-async-defer-and-preload/)):
+
+   ![Render blocking chart](https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/files/2017/09/blocking-bold@2x-1.png)
+
+   - The general rule of thumb is to put all CSS resources at the top inside the `<head>` tag, and JS resources at the bottom inside of the `<body>` tag. The reason is because the browser cannot render the page until **ALL** CSS files are parsed. And since fetching/parsing/executing JS resources blocks HTML parsing, moving JS resources to be near the bottom of the `<body>` tag means the browser gets to render the first paint of the page faster, and can execute the JS afterwards
+
+   - However, things can get more complicated if you have **noncritical CSS** that is not needed for the first paint and/or **critical JS** that is needed for the first paint. In that case, you can learn more about optimizing Critical Rendering Path [here](https://hacks.mozilla.org/2017/09/building-the-dom-faster-speculative-parsing-async-defer-and-preload/) to see what optimization can be done. And also helps to reach out to your coworkers or developer community for discussion!
+
+7. Browser makes requests for additional resources
 
    - Those resources might request even more files
 
-7. Once the browser gets to the bottom of the page it can start working on rendering, and then display the page
+8. Once the browser gets to the bottom of the page it can start working on rendering, and then display the page
 
 ![MDN Page Load](https://user-images.githubusercontent.com/1434956/53033758-9da8d580-3426-11e9-9ab8-09f42ccab9a8.png)
 
 > If you want a deep dive on how browser works, click [here](https://blog.logrocket.com/how-browser-rendering-works-behind-the-scenes-6782b0e8fb10/)
 
-> If you want a hardcore deep dive on how browser works, click [here](https://www.html5rocks.com/en/tutorials/internals/howbrowserswork)
+> If you want a deeper dive, click [here](https://www.html5rocks.com/en/tutorials/internals/howbrowserswork)
 
 ## HTML demo
 

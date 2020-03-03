@@ -13,26 +13,56 @@
 
   <body>
     <section>
+      <h2>Introduction</h2>
+      <p>
+        The purpose of this demo is to show case a few common HTML elements that you will likely use in a real project. Later in the
+        <a href="../exercise/">exercise</a>, you will be able to play with the elements to understand how they work!
+      </p>
+      <p>
+        For now, just read through each of the following category to get familiar with their special purpose and usage,
+        so you have a great mental model in place to help guide you when to use what element.
+      </p>
+    </section>
+    <section>
       <h2><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Document_metadata">Document Metadata</a></h2>
       <p>
         Metadata contains information about the page. This includes information about styles, scripts and data to help software (search
-        engines, browsers, etc.) use and render the page. Metadata for styles and scripts may be defined in the page or link to another file
+        engines, browsers, etc.) use and render the page. Metadata for styles and scripts may be defined in the page (inline) or link to another file
         that has the information.
       </p>
-      <pre>
-        &lt;html&gt;
-          &lt;head&gt;
-            &lt;title&gt;Intro to HTML&lt;/title&gt;
-            &lt;link rel=&quot;stylesheet&quot; href=&quot;./style.css&quot; /&gt;
+      <p>
+        Inline: When inlining a script or style is needed for a special reason, such as performance,  you can do so via:
 
-            &lt;style&gt;
-              hr {
-                margin: 40px;
-              }
-            &lt;/style&gt;
-          &lt;/head&gt;
-        &lt;/html&gt;
-      </pre>
+        <pre lang="html">
+          &lt;style&gt;
+            hr {
+              margin: 40px;
+            }
+          &lt;/style&gt;
+
+          &lt;script&gt;
+            function helloWorld() { alert('Hello world!') }
+          &lt;/script&gt;
+        </pre>
+      </p>
+
+      <p>
+        The following is an example of an HTML page's <code>&lt;head&gt;</code> section:
+        <pre>
+          &lt;html&gt;
+            &lt;head&gt;
+              &lt;title&gt;Intro to HTML&lt;/title&gt;
+              &lt;link rel=&quot;stylesheet&quot; href=&quot;./style.css&quot; /&gt;
+
+              &lt;style&gt;
+                hr {
+                  margin: 40px;
+                }
+              &lt;/style&gt;
+            &lt;/head&gt;
+          &lt;/html&gt;
+        </pre>
+      </p>
     </section>
     <hr />
 
@@ -40,9 +70,12 @@
       <h2><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Content_sectioning">Content Sections</a></h2>
       <p>
         Content sectioning elements allow you to organize the document content into logical pieces. Use the sectioning elements to create a
-        broad outline for your page content, including header and footer navigation, and heading elements to identify sections of content.
+        broad outline for your page content, including header, footer, navigation, and heading elements to identify sections of content.
       </p>
-      <p>The demo below includes minimal styling, which you can find in <code>step1-01/demo/style.css </code>:</p>
+      <p>
+        The demo below includes custom minimal styling, which you can find in <a href="style.css"><code>step1-01/demo/style.css</code></a
+        >:
+      </p>
       <div class="compare">
         <div class="space-right">
           <pre>
@@ -55,7 +88,25 @@
                 &lt;h5&gt;Heading 5&lt;/h5&gt;
                 &lt;h6&gt;Heading 6&lt;/h6&gt;
 
-                &lt;nav&gt;&lt;/nav&gt;
+                &lt;nav&gt;
+                  &lt;ul&gt;
+                    &lt;li&gt;
+                      &lt;a href=&quot;https://www.google.com/search?q=kittens&amp;tbm=isch&quot;&gt;
+                        Kittens 😸
+                      &lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                      &lt;a href=&quot;https://www.google.com/search?q=puppies&amp;tbm=isch&quot;&gt;
+                        Puppies 🐶
+                      &lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                      &lt;a href=&quot;https://www.google.com/search?q=baby%20chicks&amp;tbm=isch&quot;&gt;
+                        Chicks 🐤
+                      &lt;/a&gt;
+                    &lt;/li&gt;
+                  &lt;/ul&gt;
+                &lt;/nav&gt;
               &lt;/header&gt;
 
               &lt;main&gt;
@@ -77,7 +128,24 @@
               <h5>Heading 5</h5>
               <h6>Heading 6</h6>
 
-              <nav></nav>
+              <nav>
+                <ul>
+                  <li>
+                    <a href="https://www.google.com/search?q=kittens&tbm=isch">
+                      Kittens 😸
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.google.com/search?q=puppies&tbm=isch">
+                      Puppies 🐶
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.google.com/search?q=baby%20chicks&tbm=isch">
+                      Chicks 🐤
+                    </a>
+                  </li>
+              </nav>
             </header>
 
             <main>
@@ -93,6 +161,46 @@
     <hr />
     <section>
       <h2><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Text_content">Block Text content</a></h2>
+
+      <p>
+        Use HTML text content elements to organize blocks or sections of content placed between the opening
+        <code>&lt;body&gt;</code>
+        and closing
+        <code>&lt;/body&gt;</code>
+        tags. Important for accessibility (<a href="https://a11yproject.com/">a11y</a>) and SEO, these elements identify the purpose or structure of that content.
+      </p>
+
+      <p>
+        In the following examples, you will see that the browser applies minimal styling for each element type by default,
+        so the HTML page doesn't look too ugly if no custom styles are provided.
+      </p>
+
+      <p>
+        For example, <code>&lt;p&gt;</code> is styled with the following by Chrome:
+        <pre lang="css">
+          p {
+            display: block;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+          }
+        </pre>
+
+        And <code>&lt;div&gt;</code> only gets:
+
+        <pre lang="css">
+          div {
+            display: block;
+          }
+        </pre>
+      </p>
+
+      <p>
+        Additionally, <code>&lt;div&gt;</code> and <code>&lt;p&gt;</code> signal different content purpose to SEO, a11y, and developers.
+        When <code>&lt;p&gt;</code> is used, it signals that the content is a paragraph, whereas <code>&lt;div&gt;</code> is only a
+        generic block level container that doesn't convey any content purpose.
+      </p>
 
       <h3>Div</h3>
       <div>
@@ -133,8 +241,12 @@
       </ul>
 
       <h3>Pre</h3>
+      <h4>Respects spaces and new lines:</h4>
+      <p>
+        This tag defines preformatted text and is displayed in a fixed-width font (usually Courier). It preserves both spaces and line breaks as shown below:
+      </p>
       <pre>
-        // This is a pre tag            --           It respects spacing and tabs
+        // This is a pre tag            --           <-- It respects spacing and tabs
 
         &lt;ul&gt;
           &lt;li&gt;Unordered&lt;/li&gt;
@@ -143,15 +255,70 @@
         &lt;/ul&gt;
       </pre>
 
-      <pre>
-        // But actual code still needs to be escaped
+      <p>
+        In comparison, the same code block wrapped in <code>&lt;div&gt;</code> looks like this:
 
-        &amp;lt;ul&amp;gt;
-          &amp;lt;li&amp;gt;Unordered&amp;lt;/li&amp;gt;
-          &amp;lt;li&amp;gt;list&amp;lt;/li&amp;gt;
-          &amp;lt;li&amp;gt;items&amp;lt;/li&amp;gt;
-        &amp;lt;/ul&amp;gt;
-      </pre>
+        <div>
+          // This is a div tag            --           <-- It does not respect the spacing, tabs, and linebreaks
+
+          &lt;ul&gt;
+            &lt;li&gt;Unordered&lt;/li&gt;
+            &lt;li&gt;list&lt;/li&gt;
+            &lt;li&gt;items&lt;/li&gt;
+          &lt;/ul&gt;
+        </div>
+      </p>
+
+      <h4>Does not HTML code automatically:</h4>
+      <p>
+        Note that <code>&lt;pre&gt;</code> doesn't automatically escape HTML code, as illustrated below:
+      </p>
+
+      <p>
+        What you have in code:
+        <pre>
+          &lt;pre&gt;
+            &lt;ul&gt;
+              &lt;li&gt;Unordered&lt;/li&gt;
+              &lt;li&gt;list&lt;/li&gt;
+              &lt;li&gt;items&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/pre&gt;
+        </pre>
+
+        What you get in HTML:
+        <pre>
+          <ul>
+            <li>Unordered</li>
+            <li>list</li>
+            <li>items</li>
+          </ul>
+        </pre>
+      </p>
+
+      <p>
+        What you have in code:
+        <pre>
+          &amp;lt;pre&amp;gt;
+            &amp;lt;ul&amp;gt;
+              &amp;lt;li&amp;gt;Unordered&amp;lt;/li&amp;gt;
+              &amp;lt;li&amp;gt;list&amp;lt;/li&amp;gt;
+              &amp;lt;li&amp;gt;items&amp;lt;/li&amp;gt;
+            &amp;lt;/ul&amp;gt;
+          &amp;lt;/pre&amp;gt;
+        </pre>
+
+        What you get in HTML:
+        <pre>
+          &lt;pre&gt;
+            &lt;ul&gt;
+              &lt;li&gt;Unordered&lt;/li&gt;
+              &lt;li&gt;list&lt;/li&gt;
+              &lt;li&gt;items&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/pre&gt;
+        </pre>
+      </p>
     </section>
     <hr />
     <section>

@@ -20,4 +20,13 @@ h2 a:hover {
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0 5em;
+}
+
+.compare {
+  display: flex;
+}
+
+.space-right {
+  margin-right: auto;
 }

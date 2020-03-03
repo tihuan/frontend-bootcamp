@@ -34,7 +34,7 @@ A simple web page is rendered on the screen via the following simplified steps:
 
    Lastly, combining DOM and CSSOM produces the Render Tree, which represents what HTML elements get shown on the page
 
-   - The order of CSS and JS resources listed in the HTML affects the render time for the Critical Rendering Path. The following chart shows how the second `building DOM` is blocked by `JS execution`, which in turn is blocked by `build CSSOM` ([source](https://hacks.mozilla.org/2017/09/building-the-dom-faster-speculative-parsing-async-defer-and-preload/)):
+   - The order of CSS and JS resources listed in the HTML affects the render time for the Critical Rendering Path. The following chart shows how the second `building DOM` is blocked by `JS execution`, which in turn is blocked by `build CSSOM` (more details [here](https://hacks.mozilla.org/2017/09/building-the-dom-faster-speculative-parsing-async-defer-and-preload/)):
 
    ![Render blocking chart](https://2r4s9p1yi1fa2jd7j43zph8r-wpengine.netdna-ssl.com/files/2017/09/blocking-bold@2x-1.png)
 
